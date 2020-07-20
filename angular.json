@@ -29,6 +29,11 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "src/assets/svg",
+                "output": "./svg"
               }
             ],
             "styles": [
@@ -37,7 +42,11 @@
               },
               {
                 "input": "src/global.scss"
-              }
+              },
+              "./node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
+              "./node_modules/leaflet-draw/dist/leaflet.draw.css"
             ],
             "scripts": []
           },

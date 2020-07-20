@@ -1,0 +1,78 @@
+.button {
+  border-radius: 8px;
+  background-color: unset;
+  color: white;
+
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0,0,0);
+  padding: 15px;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #FFF 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+  }
+  &:active:after {
+    transform: scale(0,0);
+    opacity: 0.3;
+    transition: 0s;
+  }
+
+  @each $colorName, $color in $colors {
+    &.button-#{$colorName} {
+      background-color: $color;
+
+      &:focus {
+        outline: none;
+        background-color: lighten($color, 8deg);
+      }
+      &:hover {
+        background-color: darken($color, 8deg);
+        box-shadow: 0 6px 16px 0 lighten($color, 16deg);
+      }
+      &:active {
+        background-color: darken($color, 16deg);
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.button-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+
+    &.button-2x {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &.button-gradient {
+    background-image: radial-gradient(
+    map_get($colors, secondary),
+    map_get($colors, primary)
+    );
+  }
+
+  &.button-pill {
+    border-radius: 25px;
+    padding: 11px 10px;
+  }
+
+}

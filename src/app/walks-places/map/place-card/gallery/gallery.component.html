@@ -1,0 +1,8 @@
+<ion-content>
+  <ion-icon color="light" name="close-outline" (click)="close()" class="gallery-modal"></ion-icon>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let photo of photos">
+      <ion-img [src]="photo"></ion-img>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

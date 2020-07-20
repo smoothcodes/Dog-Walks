@@ -1,0 +1,59 @@
+<!--<ion-header [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>-->
+<!--      Blank-->
+<!--    </ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
+
+<ion-content [fullscreen]="true" class="background">
+    <main>
+        <header>
+            <div class="header-buttons">
+                <button class="button button-pill button-primary" routerLink="/walks-places/map">Discover the world</button>
+            </div>
+            <h2>Hi,</h2>
+            <h2>Where do you wish to <span class="text-primary">walk</span> today?</h2>
+        </header>
+        <section>
+            <div class="form-group search-box">
+                <div class="app-input icon">
+                    <input type="search" placeholder="Search for a location..."
+                           (focusin)="inputFocues = true;"
+                           [(ngModel)]="placesQuery"
+                           (input)="getPlaces($event)">
+                    <ion-icon name="app-search"></ion-icon>
+                </div>
+                <div class="places-box" *ngIf="inputFocues" (focusin)="inputFocues = true">
+                    <ion-list *ngIf="places.length > 0; else noResults">
+                        <ion-item class="item" lines="none" button (click)="chooseUserLocation()">
+                            <ion-icon name="navigate-outline" slot="start" color="primary"></ion-icon>
+                            <ion-label>Your location</ion-label>
+                        </ion-item>
+                        <ion-item class="item" *ngFor="let place of places" (click)="choosePlace(place)" lines="none" button>
+                            {{place.place_name}}
+                        </ion-item>
+                    </ion-list>
+                    <ng-template #noResults>
+                        <ion-item class="item" lines="none" button (click)="chooseUserLocation()">
+                            <ion-icon name="navigate-outline" slot="start" color="primary"></ion-icon>
+                            <ion-label>Your location</ion-label>
+                        </ion-item>
+                    </ng-template>
+                </div>
+
+            </div>
+
+<!--            <div class="form-group">-->
+
+<!--                <div class="app-slider">-->
+<!--                    <ng5-slider [(value)]="range" [options]="options" (valueChange)="rangeChanged($event)"></ng5-slider>-->
+<!--                </div>-->
+<!--                <label>Max search range: {{range}} KM</label>-->
+<!--            </div>-->
+        </section>
+        <footer>
+            <button class="button button-circle button-gradient button-2x" (click)="goToMap()">GO</button>
+        </footer>
+    </main>
+</ion-content>
