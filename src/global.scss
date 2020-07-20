@@ -33,3 +33,7 @@ ion-content {
   --padding-start: 21px;
   --padding-end: 21px;
 }
+
+ion-content {
+  pointer-events: auto;
+}

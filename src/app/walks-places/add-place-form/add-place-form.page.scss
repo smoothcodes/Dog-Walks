@@ -1,0 +1,19 @@
+ion-content.background {
+  --background: radial-gradient(
+                  #F0F4FB,
+                  rgba(245, 250, 255, .7)
+  );
+}
+
+.app-input {
+  width: 100%;
+  margin: 16px;
+}
+
+.hidden-input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: -9999;
+  left: -99999px;
+}

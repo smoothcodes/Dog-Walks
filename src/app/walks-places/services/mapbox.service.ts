@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {MapsServicesProviderInterface} from './maps-services.provider.interface';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 interface MapboxOutput {
     attribution: string;
@@ -28,7 +29,7 @@ export class MapboxService implements MapsServicesProviderInterface<Feature[]>{
     }
 
     getPlaces(query): Observable<Feature[]> {
-        const URL = 'https://127.0.0.1:8000/api/maps/places';
+        const URL = `${environment.apiUrl}/api/maps/places`;
 
         return this.http.get(URL, {
             params: {

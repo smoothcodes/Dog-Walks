@@ -9,7 +9,15 @@ const routes: Routes = [
     {
         path: 'map',
         loadChildren: () => import('./map/map.module').then( m => m.MapPageModule )
-    }
+    },
+    {
+        path: 'add-place',
+        loadChildren: () => import('./add-place/add-place.module').then( m => m.AddPlacePageModule)
+    },
+    {
+        path: 'add-place-form',
+        loadChildren: () => import('./add-place-form/add-place-form.module').then( m => m.AddPlaceFormPageModule)
+    },
 ];
 
 @NgModule({

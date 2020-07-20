@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import * as L from 'leaflet';
 import {latLng} from 'leaflet';
+import {environment} from '../../../environments/environment';
 
 export interface AllPlacesResponse {
     id: string;
@@ -39,7 +40,7 @@ export class MapApiService {
                longTo: string,
                markerAction = null): Observable<AllPlacesResponse[]> {
         this.isLoading$.next(true);
-        return this.http.get('https://127.0.0.1:8000/api/place', {
+        return this.http.get(`${environment.apiUrl}/api/place`, {
             params: {
                 latFrom,
                 latTo,
@@ -52,12 +53,19 @@ export class MapApiService {
         }));
     }
 
-    getMarkerById(id: string, startLat: string = null, startLong: string = null): Observable<PointResponse> {
-        return this.http.get<PointResponse>(`https://127.0.0.1:8000/api/place/${id}`, {
-            params: {
+    getMarkerById(id: string, startLat?: string, startLong?: string): Observable<PointResponse> {
+        let params;
+        if (!startLat || !startLong) {
+            params = {};
+        } else {
+            params = {
                 startLat,
                 startLong
-            }
+            };
+        }
+
+        return this.http.get<PointResponse>(`${environment.apiUrl}/api/place/${id}`, {
+            params
         });
     }
 
