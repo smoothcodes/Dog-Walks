@@ -29,7 +29,7 @@ export class AddPlacePage implements OnInit, AfterViewInit, OnDestroy {
                 maxZoom: 20,
                 accessToken: this.accessToken,
                 tileSize: 512,
-                zoomOffset: -1
+                zoomOffset: -1,
             })
         ],
         tap: true,

@@ -14,18 +14,19 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {LeafletDrawModule} from '@asymmetrik/ngx-leaflet-draw';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AddPlaceService} from './walks-places/add-place/add-place.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot({mode: 'ios'}), AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+    imports: [BrowserModule, IonicModule.forRoot({mode: 'ios'}), AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
     providers: [
         StatusBar,
         SplashScreen,
         Ng5SliderModule,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         Geolocation,
-        AddPlaceService
+        AddPlaceService,
     ],
     bootstrap: [AppComponent]
 })

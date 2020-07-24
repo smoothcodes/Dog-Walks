@@ -24,6 +24,15 @@ export interface PointResponse {
     latitude: number;
 }
 
+export interface AddPlaceResponse {
+    id: string;
+    name: string;
+    description: string;
+    photos: string[];
+    longitude: number;
+    latitude: number;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -71,5 +80,15 @@ export class MapApiService {
 
     set loading(value) {
         this.isLoading$.next(value);
+    }
+
+    addPlace(data: { longitude: number, latitude: number, photos: string[], name: string, description: string }) {
+        this.isLoading$.next(true);
+        return this.http.post(`${environment.apiUrl}/api.place`, data)
+            .pipe(map((res: AddPlaceResponse) => {
+                this.isLoading$.next(false);
+                return res;
+            }));
+
     }
 }
